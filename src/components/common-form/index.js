@@ -3,11 +3,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 
-function CommonForm(action, buttonText, isBtnDisabled, btnType, formControl, formData, setFormData, handleFileChange) {
+function CommonForm({ action, buttonText, isBtnDisabled, btnType, formControl, formData, setFormData, handleFileChange }) {
 
     function renderInputByComponentType(getCurrentControl) {
+        // console.log(getCurrentControl.placeholder);
+
         let content = null;
-        switch (getCurrentControl.control.type) {
+        switch (getCurrentControl.componentType) {
             case "input":
                 content = <div className="relative flex items-center mt-8">
                     <Input
@@ -30,12 +32,13 @@ function CommonForm(action, buttonText, isBtnDisabled, btnType, formControl, for
             case "file":
                 content = <Label
                     for={getCurrentControl.name}
-                    className="flex bg-gray-100 items-centerpx-3 py-x mx-auto mt-6 text-center border-2 border-dashed cursor-pointer">
-                    <h2>{getCurrentControl.Label}</h2>
-                    <Input onChange={handleFileChange} id={getCurrentControl.name} />
+                    className="flex bg-gray-100 items-center px-3 py-x mx-auto mt-6 text-center border-2 border-dashed cursor-pointer">
+                    <h2>{getCurrentControl.label}</h2>
+                    <Input type="file" onChange={handleFileChange} id={getCurrentControl.name} />
+
 
                 </Label>
-
+                break;
             default:
                 content = <div className="relative flex items-center mt-8">
                     <Input
@@ -66,7 +69,7 @@ function CommonForm(action, buttonText, isBtnDisabled, btnType, formControl, for
             <div>
                 <Button
                     type={btnType || "submit"}
-                    className='disabled:opacity-60 items-center justify-center flex h-11 px-5'
+                    className='disabled:opacity-60 items-center justify-center flex h-11 mt-6 px-5'
                     disabled={isBtnDisabled} >{buttonText}</Button>
             </div>
         </form>

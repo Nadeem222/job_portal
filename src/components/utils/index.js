@@ -121,5 +121,4 @@ export const initialCandidateFormData = {
     graduatedYear:"",
     linkedinProfile:"",
     githubProfile:"",
-    isPremiumUser : false
 }

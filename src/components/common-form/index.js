@@ -31,7 +31,7 @@ function CommonForm({ action, buttonText, isBtnDisabled, btnType, formControl, f
                 break;
             case "file":
                 content = <Label
-                    for={getCurrentControl.name}
+                    htmlFor={getCurrentControl.name}
                     className="flex bg-gray-100 items-center px-3 py-x mx-auto mt-6 text-center border-2 border-dashed cursor-pointer">
                     <h2>{getCurrentControl.label}</h2>
                     <Input type="file" onChange={handleFileChange} id={getCurrentControl.name} />
